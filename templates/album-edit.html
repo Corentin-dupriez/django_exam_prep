@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <!-- Main Content -->
+      <!--Edit Page-->
+      <section class="editPage">
+        <form method="post">
+        {% csrf_token %}
+          <fieldset>
+            <legend>Edit Album</legend>
+             <div class="container">
+                  {% for field in form %}
+                      {{ field.label_tag }}
+                      {{ field }}
+                  {% endfor %}
+
+              <!-- Button for Editing Album -->
+              <button class="edit-album" type="submit">Edit Album</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+{% endblock %}
