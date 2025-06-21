@@ -1,3 +1,8 @@
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 """
 Django settings for ExamPrep project.
 
@@ -20,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^#yzo1_e!3u$%@q895g-bsy@1&)e1)b&l0ej2cd2khfp3h9izp'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -81,9 +86,9 @@ WSGI_APPLICATION = 'ExamPrep.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "examprep",
-        "USER": "postgres-user",
-        "PASSWORD": "password",
+        "NAME": os.environ.get('DB_NAME'),
+        "USER": os.environ.get('DB_USER'),
+        "PASSWORD": os.environ.get('DB_PASSWORD'),
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
